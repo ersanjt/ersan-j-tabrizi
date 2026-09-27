@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="620" viewBox="0 0 960 620" role="img" aria-label="Identity graph">
+  <defs>
+    <linearGradient id="line" x1="0" x2="1"><stop stop-color="#7ee7c7"/><stop offset="1" stop-color="#f3b35b"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000" flood-opacity=".35"/></filter>
+  </defs>
+  <rect width="960" height="620" fill="#0b0d12"/>
+  <g opacity=".32" stroke="#f4efe6" stroke-width="1">
+    <path d="M0 90h960M0 180h960M0 270h960M0 360h960M0 450h960M0 540h960"/>
+    <path d="M120 0v620M240 0v620M360 0v620M480 0v620M600 0v620M720 0v620M840 0v620"/>
+  </g>
+  <g stroke="url(#line)" stroke-width="3" opacity=".8">
+    <path d="M480 310 234 176M480 310 726 176M480 310 224 446M480 310 736 446M480 310 480 110M480 310 480 510"/>
+  </g>
+  <g filter="url(#shadow)" font-family="Inter, Arial, sans-serif">
+    <rect x="337" y="236" width="286" height="148" rx="8" fill="#151820" stroke="#7ee7c7"/>
+    <text x="480" y="294" text-anchor="middle" fill="#f4efe6" font-size="28" font-weight="800">Ersan J. Tabrizi</text>
+    <text x="480" y="329" text-anchor="middle" fill="#f3b35b" font-size="16" font-weight="700">Founder / Software Engineer</text>
+    <text x="480" y="354" text-anchor="middle" fill="#a7abb5" font-size="14">AI and Cloud Infrastructure</text>
+    <g fill="#101217" stroke="#f4efe6" stroke-opacity=".22">
+      <rect x="92" y="128" width="284" height="96" rx="8"/>
+      <rect x="584" y="128" width="284" height="96" rx="8"/>
+      <rect x="82" y="398" width="284" height="96" rx="8"/>
+      <rect x="594" y="398" width="284" height="96" rx="8"/>
+      <rect x="340" y="62" width="280" height="84" rx="8"/>
+      <rect x="340" y="474" width="280" height="84" rx="8"/>
+    </g>
+    <g fill="#f4efe6" font-size="22" font-weight="800">
+      <text x="234" y="176" text-anchor="middle">GitHub</text>
+      <text x="726" y="176" text-anchor="middle">LinkedIn</text>
+      <text x="224" y="446" text-anchor="middle">Projects</text>
+      <text x="736" y="446" text-anchor="middle">X</text>
+      <text x="480" y="109" text-anchor="middle">Personal Domain</text>
+      <text x="480" y="521" text-anchor="middle">Engineering Writing</text>
+    </g>
+    <g fill="#a7abb5" font-size="14">
+      <text x="234" y="199" text-anchor="middle">ersanjt</text>
+      <text x="726" y="199" text-anchor="middle">professional profile</text>
+      <text x="224" y="469" text-anchor="middle">case studies</text>
+      <text x="736" y="469" text-anchor="middle">@ErsanTabrizi</text>
+      <text x="480" y="132" text-anchor="middle">ersanjahedtabrizi.ir</text>
+      <text x="480" y="544" text-anchor="middle">articles and architecture notes</text>
+    </g>
+  </g>
+</svg>
