@@ -352,12 +352,12 @@ html[data-theme=light] .about-portrait figcaption{background:#f4f4ef}
 body[data-route="/visual-work/"] .visual-intro h1{line-height:.96}
 .about-masthead h1{line-height:.9}
 html[lang=fa] .about-masthead h1,html[lang=ar] .about-masthead h1{line-height:1.16}
-body[data-route="/visual-work/"] .logo-social-craze-hub>div,
-body[data-route="/visual-work/"] .logo-bz-broker>div{background:#101714}
-body[data-route="/visual-work/"] .logo-social-craze-hub>div::before,
-body[data-route="/visual-work/"] .logo-bz-broker>div::before{border-color:#ffffff24}
-body[data-route="/visual-work/"] .logo-social-craze-hub:hover>div,
-body[data-route="/visual-work/"] .logo-bz-broker:hover>div{background:#17211c}
+body[data-route="/visual-work/"] .logo-social-craze-hub>div{background:#101714}
+body[data-route="/visual-work/"] .logo-social-craze-hub>div::before{border-color:#ffffff24}
+body[data-route="/visual-work/"] .logo-social-craze-hub:hover>div{background:#17211c}
+body[data-route="/visual-work/"] .logo-alimila>div{background:#aeb4b0}
+body[data-route="/visual-work/"] .logo-alimila>div::before{border-color:#111a}
+body[data-route="/visual-work/"] .logo-alimila:hover>div{background:#bcc1be}
 @media(max-width:650px){
   .hero h1{line-height:.86}
   .page-intro h1{line-height:1.08}
@@ -365,3 +365,4 @@ body[data-route="/visual-work/"] .logo-bz-broker:hover>div{background:#17211c}
   .about-masthead h1{line-height:.96}
   html[lang=fa] .about-masthead h1,html[lang=ar] .about-masthead h1{line-height:1.2}
 }
+
