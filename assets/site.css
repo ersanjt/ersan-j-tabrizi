@@ -345,3 +345,23 @@ html[data-theme=light] .about-portrait figcaption{background:#f4f4ef}
 @media(max-width:900px){.about-masthead-inner{grid-template-columns:minmax(0,1fr) 320px;gap:32px;min-height:620px}.about-masthead h1{font-size:72px}.about-portrait{min-height:480px}.about-meta{grid-template-columns:1fr}.about-meta span{min-height:54px;border-inline-end:0;border-bottom:1px solid var(--line)}.about-story-grid{grid-template-columns:1fr 1fr;gap:48px}}
 @media(max-width:650px){.site-header .brand-mark img{width:45px;height:34px}.about-masthead-inner{display:flex;flex-direction:column;align-items:stretch;min-height:auto;padding-block:58px 38px}.about-masthead h1,html[lang=fa] .about-masthead h1,html[lang=ar] .about-masthead h1{font-size:clamp(46px,13vw,66px);margin:26px 0}.about-masthead-copy>p:not(.eyebrow){font-size:16px}.about-meta{margin-top:34px;grid-template-columns:repeat(3,1fr)}.about-meta span{min-height:68px;padding:10px 8px;border-bottom:0;border-inline-end:1px solid var(--line);font-size:8px}.about-portrait{width:min(360px,100%);min-height:430px;margin:8px auto 0}.about-portrait-frame{inset:3% 4% 14%}.about-portrait-orbit{inset:1% -2% 9%}.about-portrait figcaption{max-width:90%}.about-story-grid{display:block}.about-story-grid>div:last-child{margin-top:36px;padding-top:24px}.about-story p{font-size:16px}.about-principles::after{font-size:58vw}}
 @media(prefers-reduced-motion:reduce){.about-masthead::after,.about-portrait-orbit{animation:none}.about-portrait-frame{transform:rotate(1.5deg)}}
+
+/* Readable multiline display type and contrast-aware identity cards. */
+.hero h1{line-height:.82}
+.page-intro h1{line-height:1.02}
+body[data-route="/visual-work/"] .visual-intro h1{line-height:.96}
+.about-masthead h1{line-height:.9}
+html[lang=fa] .about-masthead h1,html[lang=ar] .about-masthead h1{line-height:1.16}
+body[data-route="/visual-work/"] .logo-social-craze-hub>div,
+body[data-route="/visual-work/"] .logo-bz-broker>div{background:#101714}
+body[data-route="/visual-work/"] .logo-social-craze-hub>div::before,
+body[data-route="/visual-work/"] .logo-bz-broker>div::before{border-color:#ffffff24}
+body[data-route="/visual-work/"] .logo-social-craze-hub:hover>div,
+body[data-route="/visual-work/"] .logo-bz-broker:hover>div{background:#17211c}
+@media(max-width:650px){
+  .hero h1{line-height:.86}
+  .page-intro h1{line-height:1.08}
+  body[data-route="/visual-work/"] .visual-intro h1{line-height:1.02}
+  .about-masthead h1{line-height:.96}
+  html[lang=fa] .about-masthead h1,html[lang=ar] .about-masthead h1{line-height:1.2}
+}
