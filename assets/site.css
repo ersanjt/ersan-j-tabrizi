@@ -448,3 +448,29 @@ html[lang=fa] body,html[lang=ar] body{font-family:Tahoma,"Segoe UI",Arial,sans-s
   .visual-teaser-piece,.visual-hero-sheet{will-change:auto}
 }
 
+/* Responsive guardrails shared by every locale and route. */
+html,body{max-width:100%;overflow-x:clip}
+body{min-width:0}
+.section-inner,.hero-inner,.site-header,.site-footer{min-width:0}
+.hero-copy,.page-intro .section-inner,.section-head,.home-project-copy,.site-card-body{min-width:0}
+.hero-role,.hero-lead,.section-head>p,.page-intro p,.home-project-copy p{overflow-wrap:anywhere}
+@media(max-width:650px){
+  .section-inner,.hero-inner{width:min(calc(100% - 28px),var(--max))}
+  .site-header{padding-inline:14px}
+  .site-header .header-actions{min-width:0}
+  .language-picker summary{max-width:132px}
+  .language-picker summary .language-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .hero h1,.page-intro h1,.section h2,.about-masthead h1{overflow-wrap:anywhere;word-break:normal}
+  .home-project-visual,.feature-media,.browser-window,.visual-hero-stack{max-width:100%}
+}
+@media(max-width:370px){
+  .site-header{gap:8px;padding-inline:10px}
+  .site-header .brand-mark img{width:40px;height:auto}
+  .language-picker summary{min-width:44px;max-width:96px;padding-inline:7px}
+  .language-picker summary .language-name{display:none}
+  .section-inner,.hero-inner{width:calc(100% - 20px)}
+  .hero h1{font-size:clamp(58px,20vw,74px)}
+  .hero-actions .button{width:100%}
+}
+
+
