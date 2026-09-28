@@ -33,6 +33,7 @@ nav?.addEventListener('click', (event) => {
 document.querySelectorAll('[data-language-link]').forEach((link) => {
   link.addEventListener('click', () => {
     try { localStorage.setItem('ersan-language', link.dataset.locale); } catch {}
+    document.cookie = `ersan-language=${link.dataset.locale}; Max-Age=31536000; Path=/; SameSite=Lax`;
   });
 });
 document.addEventListener('click', (event) => {

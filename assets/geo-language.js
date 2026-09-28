@@ -8,31 +8,60 @@ export function countryLanguage(code) {
   return 'en';
 }
 
-const languageLinks = document.querySelectorAll('[data-language-link]');
-if (languageLinks.length) {
-  let preferred;
-  const explicit = new URLSearchParams(location.search).get('lang');
-  try {
-    if (explicit === 'en') localStorage.setItem('ersan-language', 'en');
-    preferred = explicit === 'en' ? 'en' : localStorage.getItem('ersan-language');
-  } catch {
-    preferred = explicit === 'en' ? 'en' : undefined;
-  }
-  const go = (locale) => {
-    if (!locale || locale === 'en') return;
-    const link = [...languageLinks].find((item) => item.dataset.locale === locale);
-    if (link) location.replace(link.href);
-  };
-  if (preferred) {
-    go(preferred);
-  } else {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 3000);
-    fetch('https://ipwho.is/', { signal: controller.signal })
-      .then((response) => response.ok ? response.json() : null)
-      .then((data) => { if (data?.success) go(countryLanguage(data.country_code)); })
-      .catch(() => {})
-      .finally(() => clearTimeout(timeout));
-  }
+const supported = new Set(['en', 'de', 'ru', 'ar', 'fa', 'tr']);
+const languageLinks = [...document.querySelectorAll('[data-language-link]')];
+const recommendation = document.querySelector('[data-language-recommendation]');
+const messages = {
+  en: 'Recommended for you',
+  de: 'Für Sie empfohlen',
+  ru: 'Рекомендуем',
+  ar: 'مقترحة لك',
+  fa: 'پیشنهاد برای شما',
+  tr: 'Sizin için önerilen'
+};
+
+function normalize(value) {
+  const code = String(value || '').toLowerCase().split('-')[0];
+  return supported.has(code) ? code : '';
 }
 
+function savedLanguage() {
+  try {
+    const stored = normalize(localStorage.getItem('ersan-language'));
+    if (stored) return stored;
+  } catch {}
+  const cookie = document.cookie.match(/(?:^|;\s*)ersan-language=([a-z]{2})/i);
+  return normalize(cookie?.[1]);
+}
+
+function recommend(locale) {
+  const code = normalize(locale) || 'en';
+  languageLinks.forEach((link) => {
+    const active = link.dataset.locale === code;
+    link.classList.toggle('is-recommended', active);
+    if (active) link.setAttribute('aria-describedby', 'language-recommendation');
+    else link.removeAttribute('aria-describedby');
+  });
+  if (recommendation) recommendation.textContent = messages[code];
+}
+
+languageLinks.forEach((link) => link.addEventListener('click', () => {
+  const locale = normalize(link.dataset.locale);
+  try { localStorage.setItem('ersan-language', locale); } catch {}
+  document.cookie = `ersan-language=${locale}; Max-Age=31536000; Path=/; SameSite=Lax`;
+}));
+
+const saved = savedLanguage();
+const browser = normalize(navigator.languages?.[0] || navigator.language);
+if (saved || browser) {
+  recommend(saved || browser);
+} else {
+  recommend('en');
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 2500);
+  fetch('https://ipwho.is/', { signal: controller.signal })
+    .then((response) => response.ok ? response.json() : null)
+    .then((data) => { if (data?.success) recommend(countryLanguage(data.country_code)); })
+    .catch(() => {})
+    .finally(() => clearTimeout(timeout));
+}
