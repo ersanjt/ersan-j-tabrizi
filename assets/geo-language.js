@@ -11,7 +11,13 @@ export function countryLanguage(code) {
 const languageLinks = document.querySelectorAll('[data-language-link]');
 if (languageLinks.length) {
   let preferred;
-  try { preferred = localStorage.getItem('ersan-language'); } catch {}
+  const explicit = new URLSearchParams(location.search).get('lang');
+  try {
+    if (explicit === 'en') localStorage.setItem('ersan-language', 'en');
+    preferred = explicit === 'en' ? 'en' : localStorage.getItem('ersan-language');
+  } catch {
+    preferred = explicit === 'en' ? 'en' : undefined;
+  }
   const go = (locale) => {
     if (!locale || locale === 'en') return;
     const link = [...languageLinks].find((item) => item.dataset.locale === locale);
@@ -29,3 +35,4 @@ if (languageLinks.length) {
       .finally(() => clearTimeout(timeout));
   }
 }
+
