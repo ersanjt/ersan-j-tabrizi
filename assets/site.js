@@ -173,7 +173,7 @@ if (!reduceMotion) {
   });
 
   const canvas = document.querySelector('[data-motion-field]');
-  if (canvas) {
+  if (canvas && matchMedia('(min-width: 901px) and (pointer: fine)').matches) {
     const context = canvas.getContext('2d');
     let width = 0;
     let height = 0;
@@ -243,3 +243,4 @@ if (!reduceMotion) {
     drawField();
   }
 }
+
