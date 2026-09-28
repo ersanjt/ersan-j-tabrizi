@@ -6,6 +6,8 @@ ErrorDocument 404 /en/404.html
   RewriteEngine On
   RewriteCond %{HTTPS} !=on
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  RewriteCond %{QUERY_STRING} (?:^|&)lang=(en|de|ru|ar|fa|tr)(?:&|$) [NC]
+  RewriteRule ^$ /%1/ [R=301,L,NE,QSD]
   RewriteRule ^(about|projects|visual-work|open-source|engineering|experience|contact)/?$ /en/$1/ [R=301,L,NE]
   RewriteRule ^engineering/(.+)/?$ /en/engineering/$1/ [R=301,L,NE]
 </IfModule>
@@ -25,3 +27,4 @@ ErrorDocument 404 /en/404.html
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json image/svg+xml
 </IfModule>
+
