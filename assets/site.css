@@ -8,10 +8,10 @@
 
 /* Project previews remain legible until a visitor chooses to inspect them. */
 .site-gallery .sites-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-.site-gallery .site-card{display:flex;flex-direction:column;--preview-height:290px}
+.site-gallery .site-card{display:flex;flex-direction:column;--preview-height:clamp(320px,30vw,370px)}
 .site-gallery .site-card[hidden]{display:none}
-.site-gallery .browser-viewport{height:var(--preview-height);background:#202b26}
-.site-gallery .browser-viewport>img{display:block;width:100%;height:auto;min-height:100%;object-fit:cover;object-position:top;will-change:auto}
+.site-gallery .browser-viewport{height:var(--preview-height);background:#202b26;isolation:isolate}
+.site-gallery .browser-viewport>img{display:block;width:100%;height:auto;min-height:0;max-width:none;object-position:top center;transform:translateY(0);will-change:transform}
 .site-gallery .browser-window:hover .browser-viewport>img,.site-gallery .browser-window:focus-visible .browser-viewport>img{animation:site-scroll-project 14s ease-in-out 1s 1 alternate}
 .site-gallery .site-card-body{flex:1;min-height:0;padding:18px 20px 20px;justify-content:flex-start}
 .site-gallery .site-card h3{font-size:21px;margin:10px 0 5px}
@@ -22,7 +22,7 @@
 .site-gallery .preview-fallback img{max-width:180px;max-height:78px;object-fit:contain;margin-bottom:14px}
 .site-gallery .preview-fallback span{font:12px 'IBM Plex Mono',monospace;color:#a9d8c7}
 .site-gallery .preview-fallback small{margin-top:18px;border-top:1px solid #709580;padding-top:8px;color:#c9ee8f;font-size:11px}
-@media(max-width:650px){.site-gallery .sites-grid{grid-template-columns:1fr}.site-gallery .site-card{--preview-height:255px}}
+@media(max-width:650px){.site-gallery .sites-grid{grid-template-columns:1fr}.site-gallery .site-card{--preview-height:clamp(220px,68vw,270px)}}
 @media(prefers-reduced-motion:reduce){.site-gallery .browser-window:hover .browser-viewport>img,.site-gallery .browser-window:focus-visible .browser-viewport>img{animation:none}}
 
 /* ASIL is presented as a project dossier rather than another archive tile. */
@@ -237,8 +237,9 @@ html[dir=rtl] .hero h1 span:last-child{animation-name:hero-type-in-rtl}
 .visual-teaser-piece-1{animation:visual-float-one 7s ease-in-out infinite alternate}.visual-teaser-piece-2{animation:visual-float-two 8.5s ease-in-out infinite alternate}.visual-teaser-piece-3{animation:visual-float-three 9s ease-in-out infinite alternate}
 @keyframes visual-float-one{to{margin-top:-8px}}@keyframes visual-float-two{to{margin-top:10px}}@keyframes visual-float-three{to{margin-bottom:9px}}
 .about-grid figure{overflow:hidden}.about-grid figure img{transition:transform 1.1s cubic-bezier(.2,.75,.2,1),filter .6s ease}.about-grid figure:hover img{transform:scale(1.045);filter:grayscale(.1)}
-.site-gallery .browser-viewport.is-playing>img{animation:site-scroll-project 18s ease-in-out 1s infinite alternate}
-.site-gallery .site-card:nth-child(3n+2) .browser-viewport.is-playing>img{animation-duration:21s}
+.site-gallery .browser-viewport.is-playing>img{animation:none}
+.site-gallery .browser-window:hover .browser-viewport>img,.site-gallery .browser-window:focus-visible .browser-viewport>img{animation:site-scroll-project 16s ease-in-out .35s 1 alternate}
+.site-gallery .site-card:nth-child(3n+2) .browser-window:hover .browser-viewport>img,.site-gallery .site-card:nth-child(3n+2) .browser-window:focus-visible .browser-viewport>img{animation-duration:19s}
 
 @media(max-width:650px){.page-loader>i{width:70vw}.motion-field{opacity:.55}.motion-orbit{display:none}.portrait-frame{transform:rotate(1.2deg)}.hero h1 span{animation-delay:.55s}.hero h1 span:last-child,html[dir=rtl] .hero h1 span:last-child{animation-name:hero-type-in;animation-delay:.67s}.page-intro::before{width:52%}.page-intro::after{font-size:42vw;inset-block-end:.03em;opacity:.65}}
 @media(prefers-reduced-motion:reduce){.page-loader{display:none}.hero h1 span,.motion-orbit,.motion-orbit::before,.motion-orbit::after,.motion-orbit i,.page-intro::before,.page-intro::after,.page-intro h1,.visual-teaser-piece,.site-gallery .browser-viewport.is-playing>img{animation:none}.motion-field{display:none}.portrait-frame{transform:rotate(1.8deg)}}
@@ -494,5 +495,3 @@ body{min-width:0}
   .hero h1{font-size:clamp(58px,20vw,74px)}
   .hero-actions .button{width:100%}
 }
-
-
